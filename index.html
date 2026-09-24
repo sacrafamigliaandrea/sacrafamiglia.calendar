@@ -3,113 +3,144 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Eventi scuola · Sacra Famiglia</title>
+<title>Calendario eventi · Sacra Famiglia</title>
 <meta name="description" content="Portale del personale della Scuola Sacra Famiglia di Orzinuovi per inserire e consultare gli eventi.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
 :root{
-  --blu:#123E90; --blu-scuro:#0D2E6B; --blu-chiaro:#E4EBF8; --blu-medio:#7FA3EE;
-  --bg:#F4F6FB; --superficie:#FFFFFF; --linea:#D3DAE8; --testo:#18223A; --muto:#5A6684;
-  --ambra:#9A6A12; --ambra-chiaro:#FBF1DC; --verde:#1F6B45; --verde-chiaro:#E1F1E8;
-  --ombra:0 1px 2px rgba(18,62,144,.06),0 10px 28px rgba(18,62,144,.08);
+  --red:#C43B33; --red-dark:#A32F29;
+  --accent:#123E90; --accent-dark:#0E3172; --accent-soft:#E6ECF7; --accent-mid:#3D62B3;
+  --ok:#1B6D3F; --ok-soft:#E6F1EB; --amber:#B7791F; --amber-soft:#FBF1DD;
+  --ink:#1D2A24; --ink-2:#4B5A52; --ink-3:#7C8A83; --line:#D9E2DC; --bg:#F4F7F5; --card:#FFFFFF;
+  --r:12px; --shadow:0 1px 2px rgba(20,40,30,.06),0 6px 20px rgba(20,40,30,.06);
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--testo);font-family:"Source Sans 3","Segoe UI",system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
-.wrap{max-width:640px;margin:0 auto;padding:28px 20px 60px}
-header{display:flex;align-items:center;gap:14px;margin-bottom:28px}
-header svg{flex:0 0 44px}
-header .nome{font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--blu)}
-header .sotto{font-size:14px;color:var(--muto)}
-h1{font-size:clamp(26px,5vw,34px);line-height:1.15;margin:0 0 8px;color:var(--blu-scuro)}
-.lead{color:var(--muto);margin:0 0 22px;max-width:52ch}
-.card{background:var(--superficie);border:1px solid var(--linea);border-radius:14px;padding:22px;box-shadow:var(--ombra)}
-.card + .card{margin-top:14px}
-.card h2{font-size:18px;margin:0 0 10px;color:var(--blu-scuro)}
-.card p{margin:8px 0}
-#gsi{display:flex;justify-content:center;margin:14px 0 6px;min-height:44px}
-.nota{font-size:14px;color:var(--muto)}
-.avviso{background:var(--ambra-chiaro);color:var(--ambra);border-radius:10px;padding:12px 14px;font-size:15px;margin-top:12px}
-.ok{background:var(--verde-chiaro);color:var(--verde)}
-.utente{display:flex;align-items:center;gap:12px;margin-bottom:18px}
-.utente img{width:44px;height:44px;border-radius:50%;border:2px solid var(--blu-chiaro)}
+html,body{margin:0;padding:0}
+body{font-family:"Open Sans",-apple-system,system-ui,sans-serif;color:var(--ink);background:var(--bg);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+main{flex:1;max-width:880px;width:100%;margin:0 auto;padding:22px 20px 40px;display:grid;gap:16px}
+
+/* ── HEADER ─────────────────────────────────────── */
+header{background:var(--red);color:#fff;padding:20px 32px;display:flex;align-items:center;gap:18px}
+header .brand{flex:none;display:flex;flex-direction:column;align-items:center;gap:3px;padding-right:18px;border-right:1px solid rgba(255,255,255,.35)}
+header .wordmark{background:#fff;color:var(--red);font-weight:700;font-size:22px;line-height:1;padding:9px 12px 11px;border-radius:6px;letter-spacing:-.01em}
+header .domain{font-weight:400;font-size:13.5px;color:#fff;letter-spacing:-.01em;line-height:1}
+header .domain b{font-weight:700}
+header .domain i{font-weight:700;font-style:italic;opacity:.92}
+header h1{margin:0;font-size:21px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+header h1 span{display:block;font-size:16px;font-weight:500;opacity:.92;margin-top:2px}
+header p{margin:4px 0 0;font-size:13.5px;opacity:.9;max-width:64ch}
+
+/* ── PANNELLI ───────────────────────────────────── */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:18px 20px}
+.panel h3{margin:0 0 6px;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-dark);font-weight:700}
+.panel h2{margin:0 0 6px;font-size:18px;font-weight:700}
+.panel p{margin:6px 0;color:var(--ink-2)}
+.small{font-size:12px;color:var(--ink-3)}
+#gsi{display:flex;justify-content:center;margin:16px 0 4px;min-height:44px}
+.msg{border-radius:8px;padding:10px 12px;font-size:13.5px;margin-top:12px;background:var(--amber-soft);color:var(--amber)}
+.msg.ok{background:var(--ok-soft);color:var(--ok)}
+
+.btn{border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:8px;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:background .15s}
+.btn:hover,.btn:focus-visible{background:var(--accent-dark);outline:none}
+.btn.ghost{background:#fff;color:var(--accent-dark)}
+.btn.ghost:hover{background:var(--accent-soft)}
+.btn.mini{padding:6px 10px;font-size:12.5px;font-weight:500;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* ── UTENTE ─────────────────────────────────────── */
+.utente{display:flex;align-items:center;gap:12px}
+.utente img{width:42px;height:42px;border-radius:50%;border:2px solid var(--accent-soft)}
 .utente .n{font-weight:700}
-.utente .e{font-size:14px;color:var(--muto)}
-.utente button{margin-left:auto;background:none;border:1px solid var(--linea);border-radius:999px;padding:6px 12px;font:inherit;font-size:14px;color:var(--muto);cursor:pointer}
-.utente button:hover{border-color:var(--blu);color:var(--blu)}
-.cta{display:flex;align-items:center;gap:14px;background:var(--blu);color:#fff;text-decoration:none;border-radius:14px;padding:18px 20px;font-size:20px;font-weight:700;box-shadow:var(--ombra);transition:background .15s}
-.cta:hover,.cta:focus-visible{background:var(--blu-scuro);outline:none}
-.cta svg{flex:0 0 30px}
-.cta small{display:block;font-size:14px;font-weight:400;opacity:.85}
-.griglia{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
-.link{display:flex;flex-direction:column;gap:6px;background:var(--superficie);border:1px solid var(--linea);border-radius:12px;padding:14px;text-decoration:none;color:var(--testo);transition:border-color .15s}
-.link:hover,.link:focus-visible{border-color:var(--blu);outline:none}
-.link svg{width:26px;height:26px}
-.link b{font-size:16px;color:var(--blu-scuro)}
-.link span{font-size:14px;color:var(--muto)}
-details{border-top:1px solid var(--linea);padding:10px 0}
-details:last-of-type{border-bottom:1px solid var(--linea)}
-summary{cursor:pointer;font-weight:600;color:var(--blu-scuro);list-style:none;display:flex;align-items:center;gap:8px}
+.utente .e{font-size:12.5px;color:var(--ink-3)}
+.utente .btn{margin-left:auto}
+
+/* ── AZIONE PRINCIPALE ──────────────────────────── */
+.azione{border:2px dashed var(--accent-mid);border-radius:var(--r);background:var(--accent-soft);padding:24px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;color:var(--ink);transition:background .15s,border-color .15s}
+.azione:hover,.azione:focus-visible{background:#D7E1F3;border-color:var(--accent);outline:none}
+.azione svg{width:38px;height:38px;color:var(--accent)}
+.azione strong{font-size:17px;color:var(--accent-dark)}
+.azione span{font-size:12.5px;color:var(--ink-2);max-width:48ch}
+.griglia{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* ── ISTRUZIONI ─────────────────────────────────── */
+details{border-top:1px solid var(--line);padding:9px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--ink);list-style:none;display:flex;align-items:center;gap:9px}
 summary::-webkit-details-marker{display:none}
-summary::before{content:"";width:8px;height:8px;border-right:2px solid var(--blu);border-bottom:2px solid var(--blu);transform:rotate(-45deg);transition:transform .15s}
+summary::before{content:"";width:7px;height:7px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg);transition:transform .15s;flex:none}
 details[open] summary::before{transform:rotate(45deg)}
-details p, details ul{font-size:15px;color:var(--muto);margin:8px 0}
+details p,details ul{font-size:13.5px;color:var(--ink-2);margin:6px 0 2px}
 details ul{padding-left:18px}
-footer{margin-top:28px;font-size:13px;color:var(--muto);text-align:center}
+
+footer{text-align:center;font-size:12px;color:var(--ink-3);padding:20px}
 [hidden]{display:none!important}
-@media (max-width:480px){.griglia{grid-template-columns:1fr}}
+@media (max-width:640px){
+  header{padding:14px 16px;gap:12px}
+  header .brand{padding-right:12px}
+  header .wordmark{font-size:17px;padding:7px 9px 9px}
+  header p{font-size:12.5px}
+  main{padding:14px 12px 30px;gap:14px}
+  .panel{padding:14px 12px}
+  .griglia{grid-template-columns:1fr}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><rect x="2" y="2" width="40" height="40" rx="9" fill="#123E90"/><rect x="10" y="12" width="24" height="22" rx="3" fill="#fff"/><rect x="10" y="12" width="24" height="6" rx="3" fill="#7FA3EE"/><rect x="14" y="21" width="4" height="4" rx="1" fill="#123E90"/><rect x="20" y="21" width="4" height="4" rx="1" fill="#123E90"/><rect x="26" y="21" width="4" height="4" rx="1" fill="#123E90"/><rect x="14" y="27" width="4" height="4" rx="1" fill="#123E90"/><rect x="20" y="27" width="4" height="4" rx="1" fill="#7FA3EE"/></svg>
-    <div><div class="nome">Scuola Sacra Famiglia · Orzinuovi</div><div class="sotto">Calendario eventi del personale</div></div>
-  </header>
+<header>
+  <div class="brand" aria-hidden="true">
+    <div class="wordmark">campus</div>
+    <div class="domain">sacra<b>famiglia</b><i>.edu</i></div>
+  </div>
+  <div>
+    <h1>Scuola Sacra Famiglia<span>Sistema integrato di coordinamento di eventi, spazi e persone</span></h1>
+    <p>Un'unica fonte di informazione condivisa: chi inserisce una volta, informa tutti. Così ognuno lavora meglio, e la scuola lavora insieme.</p>
+  </div>
+</header>
 
+<main>
   <!-- Prima del login -->
-  <section id="accesso">
-    <h1>Eventi della scuola</h1>
-    <p class="lead">Un evento si inserisce una volta sola. Cucina, pulizie, segreteria, giardinieri ed educatori lo vedono sul proprio calendario con i dettagli che li riguardano.</p>
-    <div class="card">
-      <h2>Accedi con l'account della scuola</h2>
-      <p class="nota">Serve l'indirizzo <b>@sacrafamiglia.education</b>. Gli account personali non sono ammessi.</p>
-      <div id="gsi"></div>
-      <div id="msg" class="avviso" hidden></div>
-    </div>
+  <section id="accesso" class="panel">
+    <h3>Area riservata</h3>
+    <h2>Accedi con l'account della scuola</h2>
+    <p>Serve l'indirizzo <b>@sacrafamiglia.education</b>. Gli account personali non sono ammessi.</p>
+    <div id="gsi"></div>
+    <div id="msg" class="msg" hidden></div>
+    <p class="small">Un evento si inserisce una volta sola: cucina, pulizie, segreteria, giardinieri ed educatori lo trovano sul proprio calendario con i dettagli che li riguardano.</p>
   </section>
 
   <!-- Dopo il login -->
   <section id="portale" hidden>
-    <div class="utente">
+    <div class="panel utente">
       <img id="u-foto" alt="" referrerpolicy="no-referrer">
       <div><div class="n" id="u-nome"></div><div class="e" id="u-email"></div></div>
-      <button type="button" id="esci">Esci</button>
+      <button type="button" class="btn ghost mini" id="esci">Esci</button>
     </div>
 
-    <a class="cta" id="link-modulo" href="https://docs.google.com/forms/d/1uW4JvX_o1EzYRJbl97mOV9GsmsYA6o51I4Po9sPY_Qg/viewform" target="_blank" rel="noopener">
-      <svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="#fff" opacity=".18"/><path d="M15 8v14M8 15h14" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
-      <span>Nuovo evento<small>Gite, riunioni, feste, colloqui, formazione</small></span>
-    </a>
-
-    <div class="griglia">
-      <a class="link" href="https://calendar.google.com" target="_blank" rel="noopener">
-        <svg viewBox="0 0 26 26" aria-hidden="true"><rect x="3" y="5" width="20" height="18" rx="3" fill="none" stroke="#123E90" stroke-width="2"/><path d="M3 10h20" stroke="#123E90" stroke-width="2"/><path d="M8 3v4M18 3v4" stroke="#123E90" stroke-width="2" stroke-linecap="round"/></svg>
-        <b>Apri il calendario</b><span>I tuoi calendari sono già attivi</span>
+    <div class="griglia" style="margin-top:16px">
+      <a class="azione" href="https://docs.google.com/forms/d/1uW4JvX_o1EzYRJbl97mOV9GsmsYA6o51I4Po9sPY_Qg/viewform" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>
+        <strong>Nuovo evento</strong>
+        <span>Gite, riunioni, feste, colloqui, formazione, corsi settimanali. Due o tre minuti, tutti i dettagli una volta sola.</span>
       </a>
-      <a class="link" href="mailto:andreacerioli@sacrafamiglia.education?subject=Calendario%20eventi">
-        <svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="10" fill="none" stroke="#123E90" stroke-width="2"/><path d="M13 12v6M13 8.5v.5" stroke="#123E90" stroke-width="2" stroke-linecap="round"/></svg>
-        <b>Serve aiuto?</b><span>Scrivi ad Andrea Cerioli</span>
+      <a class="azione" href="https://calendar.google.com" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M7 14h2M11 14h2M15 14h2M7 17h2M11 17h2"/></svg>
+        <strong>I tuoi calendari</strong>
+        <span>Già attivi sul telefono e sul PC con l'account della scuola.</span>
       </a>
     </div>
 
-    <div class="card" style="margin-top:14px">
-      <h2>Come funziona</h2>
+    <section class="panel" style="margin-top:16px">
+      <h3>Come funziona</h3>
       <details>
         <summary>Modificare o annullare un evento</summary>
         <p>Dopo l'invio ricevi un'email di conferma con il link "modifica la tua risposta". Da lì cambi orari, luogo o ricadute e reinvii: i calendari si aggiornano da soli. Per annullare, metti "Sì" all'ultima domanda: l'evento sparisce da tutti i calendari e lo spazio si libera.</p>
+      </details>
+      <details>
+        <summary>Corsi e attività settimanali</summary>
+        <p>Alla domanda "Si ripete?" scegli "Ogni settimana", spunta i giorni e indica la data finale. La data di inizio è la prima lezione; ora di inizio e fine sono quelle della singola lezione. Lo spazio resta prenotato per tutta la serie.</p>
       </details>
       <details>
         <summary>Il pulsante + di Google Calendar</summary>
@@ -131,15 +162,15 @@ footer{margin-top:28px;font-size:13px;color:var(--muto);text-align:center}
         <summary>Il modulo sul telefono, come un'app</summary>
         <p>Apri "Nuovo evento" in Chrome, menu → "Aggiungi a schermata Home". Oppure aggiungi questa pagina.</p>
       </details>
-    </div>
+    </section>
   </section>
+</main>
 
-  <footer>Scuola Sacra Famiglia · Orzinuovi (BS)</footer>
-</div>
+<footer>Scuola Sacra Famiglia · Orzinuovi (BS)</footer>
 
 <script>
 // ---- Configurazione ---------------------------------------------------------
-// ID client OAuth "Applicazione web" creato nel progetto Google Cloud della scuola
+// ID client OAuth "Applicazione web" del progetto Google Cloud della scuola
 // (API e servizi → Credenziali). Origini JavaScript autorizzate: l'URL di questo sito.
 const CLIENT_ID = '899518512348-qdsr753psgdkqinnv3c26aivcf5utulq.apps.googleusercontent.com';
 const DOMINIO = 'sacrafamiglia.education';
@@ -185,7 +216,7 @@ function avviaGoogle() {
   if (!window.google || !google.accounts) { setTimeout(avviaGoogle, 150); return; }
   if (CLIENT_ID.startsWith('INSERISCI')) { msg('Pagina non ancora configurata: manca l\'ID client OAuth (vedi commento nel sorgente).'); return; }
   google.accounts.id.initialize({ client_id: CLIENT_ID, callback: onCredenziale, hd: DOMINIO, auto_select: true, ux_mode: 'popup', itp_support: true });
-  google.accounts.id.renderButton($('#gsi'), { theme: 'filled_blue', size: 'large', shape: 'pill', text: 'signin_with', locale: 'it', width: 280 });
+  google.accounts.id.renderButton($('#gsi'), { theme: 'filled_blue', size: 'large', shape: 'rectangular', text: 'signin_with', locale: 'it', width: 280 });
 }
 
 $('#esci').addEventListener('click', () => {
