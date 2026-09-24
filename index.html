@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eventi scuola · Sacra Famiglia</title>
+<meta name="description" content="Portale del personale della Scuola Sacra Famiglia di Orzinuovi per inserire e consultare gli eventi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+:root{
+  --blu:#123E90; --blu-scuro:#0D2E6B; --blu-chiaro:#E4EBF8; --blu-medio:#7FA3EE;
+  --bg:#F4F6FB; --superficie:#FFFFFF; --linea:#D3DAE8; --testo:#18223A; --muto:#5A6684;
+  --ambra:#9A6A12; --ambra-chiaro:#FBF1DC; --verde:#1F6B45; --verde-chiaro:#E1F1E8;
+  --ombra:0 1px 2px rgba(18,62,144,.06),0 10px 28px rgba(18,62,144,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--testo);font-family:"Source Sans 3","Segoe UI",system-ui,sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:28px 20px 60px}
+header{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+header svg{flex:0 0 44px}
+header .nome{font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--blu)}
+header .sotto{font-size:14px;color:var(--muto)}
+h1{font-size:clamp(26px,5vw,34px);line-height:1.15;margin:0 0 8px;color:var(--blu-scuro)}
+.lead{color:var(--muto);margin:0 0 22px;max-width:52ch}
+.card{background:var(--superficie);border:1px solid var(--linea);border-radius:14px;padding:22px;box-shadow:var(--ombra)}
+.card + .card{margin-top:14px}
+.card h2{font-size:18px;margin:0 0 10px;color:var(--blu-scuro)}
+.card p{margin:8px 0}
+#gsi{display:flex;justify-content:center;margin:14px 0 6px;min-height:44px}
+.nota{font-size:14px;color:var(--muto)}
+.avviso{background:var(--ambra-chiaro);color:var(--ambra);border-radius:10px;padding:12px 14px;font-size:15px;margin-top:12px}
+.ok{background:var(--verde-chiaro);color:var(--verde)}
+.utente{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.utente img{width:44px;height:44px;border-radius:50%;border:2px solid var(--blu-chiaro)}
+.utente .n{font-weight:700}
+.utente .e{font-size:14px;color:var(--muto)}
+.utente button{margin-left:auto;background:none;border:1px solid var(--linea);border-radius:999px;padding:6px 12px;font:inherit;font-size:14px;color:var(--muto);cursor:pointer}
+.utente button:hover{border-color:var(--blu);color:var(--blu)}
+.cta{display:flex;align-items:center;gap:14px;background:var(--blu);color:#fff;text-decoration:none;border-radius:14px;padding:18px 20px;font-size:20px;font-weight:700;box-shadow:var(--ombra);transition:background .15s}
+.cta:hover,.cta:focus-visible{background:var(--blu-scuro);outline:none}
+.cta svg{flex:0 0 30px}
+.cta small{display:block;font-size:14px;font-weight:400;opacity:.85}
+.griglia{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.link{display:flex;flex-direction:column;gap:6px;background:var(--superficie);border:1px solid var(--linea);border-radius:12px;padding:14px;text-decoration:none;color:var(--testo);transition:border-color .15s}
+.link:hover,.link:focus-visible{border-color:var(--blu);outline:none}
+.link svg{width:26px;height:26px}
+.link b{font-size:16px;color:var(--blu-scuro)}
+.link span{font-size:14px;color:var(--muto)}
+details{border-top:1px solid var(--linea);padding:10px 0}
+details:last-of-type{border-bottom:1px solid var(--linea)}
+summary{cursor:pointer;font-weight:600;color:var(--blu-scuro);list-style:none;display:flex;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"";width:8px;height:8px;border-right:2px solid var(--blu);border-bottom:2px solid var(--blu);transform:rotate(-45deg);transition:transform .15s}
+details[open] summary::before{transform:rotate(45deg)}
+details p, details ul{font-size:15px;color:var(--muto);margin:8px 0}
+details ul{padding-left:18px}
+footer{margin-top:28px;font-size:13px;color:var(--muto);text-align:center}
+[hidden]{display:none!important}
+@media (max-width:480px){.griglia{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><rect x="2" y="2" width="40" height="40" rx="9" fill="#123E90"/><rect x="10" y="12" width="24" height="22" rx="3" fill="#fff"/><rect x="10" y="12" width="24" height="6" rx="3" fill="#7FA3EE"/><rect x="14" y="21" width="4" height="4" rx="1" fill="#123E90"/><rect x="20" y="21" width="4" height="4" rx="1" fill="#123E90"/><rect x="26" y="21" width="4" height="4" rx="1" fill="#123E90"/><rect x="14" y="27" width="4" height="4" rx="1" fill="#123E90"/><rect x="20" y="27" width="4" height="4" rx="1" fill="#7FA3EE"/></svg>
+    <div><div class="nome">Scuola Sacra Famiglia · Orzinuovi</div><div class="sotto">Calendario eventi del personale</div></div>
+  </header>
+
+  <!-- Prima del login -->
+  <section id="accesso">
+    <h1>Eventi della scuola</h1>
+    <p class="lead">Un evento si inserisce una volta sola. Cucina, pulizie, segreteria, giardinieri ed educatori lo vedono sul proprio calendario con i dettagli che li riguardano.</p>
+    <div class="card">
+      <h2>Accedi con l'account della scuola</h2>
+      <p class="nota">Serve l'indirizzo <b>@sacrafamiglia.education</b>. Gli account personali non sono ammessi.</p>
+      <div id="gsi"></div>
+      <div id="msg" class="avviso" hidden></div>
+    </div>
+  </section>
+
+  <!-- Dopo il login -->
+  <section id="portale" hidden>
+    <div class="utente">
+      <img id="u-foto" alt="" referrerpolicy="no-referrer">
+      <div><div class="n" id="u-nome"></div><div class="e" id="u-email"></div></div>
+      <button type="button" id="esci">Esci</button>
+    </div>
+
+    <a class="cta" id="link-modulo" href="https://docs.google.com/forms/d/1uW4JvX_o1EzYRJbl97mOV9GsmsYA6o51I4Po9sPY_Qg/viewform" target="_blank" rel="noopener">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><circle cx="15" cy="15" r="14" fill="#fff" opacity=".18"/><path d="M15 8v14M8 15h14" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+      <span>Nuovo evento<small>Gite, riunioni, feste, colloqui, formazione</small></span>
+    </a>
+
+    <div class="griglia">
+      <a class="link" href="https://calendar.google.com" target="_blank" rel="noopener">
+        <svg viewBox="0 0 26 26" aria-hidden="true"><rect x="3" y="5" width="20" height="18" rx="3" fill="none" stroke="#123E90" stroke-width="2"/><path d="M3 10h20" stroke="#123E90" stroke-width="2"/><path d="M8 3v4M18 3v4" stroke="#123E90" stroke-width="2" stroke-linecap="round"/></svg>
+        <b>Apri il calendario</b><span>I tuoi calendari sono già attivi</span>
+      </a>
+      <a class="link" href="mailto:andreacerioli@sacrafamiglia.education?subject=Calendario%20eventi">
+        <svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="10" fill="none" stroke="#123E90" stroke-width="2"/><path d="M13 12v6M13 8.5v.5" stroke="#123E90" stroke-width="2" stroke-linecap="round"/></svg>
+        <b>Serve aiuto?</b><span>Scrivi ad Andrea Cerioli</span>
+      </a>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2>Come funziona</h2>
+      <details>
+        <summary>Modificare o annullare un evento</summary>
+        <p>Dopo l'invio ricevi un'email di conferma con il link "modifica la tua risposta". Da lì cambi orari, luogo o ricadute e reinvii: i calendari si aggiornano da soli. Per annullare, metti "Sì" all'ultima domanda: l'evento sparisce da tutti i calendari e lo spazio si libera.</p>
+      </details>
+      <details>
+        <summary>Il pulsante + di Google Calendar</summary>
+        <p>Non avvisa nessuno: crea solo un appunto sul tuo calendario personale. Gli eventi della scuola passano dal modulo.</p>
+      </details>
+      <details>
+        <summary>Spazi già occupati</summary>
+        <p>Il modulo prenota lo spazio scelto. Se è già occupato in quell'orario, ricevi un'email con la segnalazione e l'evento viene marcato "CONFLITTO SPAZIO": cambia orario o luogo dal link di modifica.</p>
+      </details>
+      <details>
+        <summary>Tre impostazioni consigliate in Calendar</summary>
+        <ul>
+          <li>Sul web: ingranaggio → Impostazioni → Lingua e regione: Italiano, Italia, formato ora 13:00.</li>
+          <li>Opzioni di visualizzazione → Inizio settimana: lunedì.</li>
+          <li>Nell'app: Impostazioni → Generali → Inizio settimana: lunedì.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Il modulo sul telefono, come un'app</summary>
+        <p>Apri "Nuovo evento" in Chrome, menu → "Aggiungi a schermata Home". Oppure aggiungi questa pagina.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer>Scuola Sacra Famiglia · Orzinuovi (BS)</footer>
+</div>
+
+<script>
+// ---- Configurazione ---------------------------------------------------------
+// ID client OAuth "Applicazione web" creato nel progetto Google Cloud della scuola
+// (API e servizi → Credenziali). Origini JavaScript autorizzate: l'URL di questo sito.
+const CLIENT_ID = '899518512348-qdsr753psgdkqinnv3c26aivcf5utulq.apps.googleusercontent.com';
+const DOMINIO = 'sacrafamiglia.education';
+const CHIAVE = 'eventi-scuola-utente';
+
+// ---- Stato ------------------------------------------------------------------
+const $ = s => document.querySelector(s);
+const msg = (t, ok) => { const m = $('#msg'); m.hidden = !t; m.textContent = t || ''; m.classList.toggle('ok', !!ok); };
+
+function mostraPortale(u) {
+  $('#u-nome').textContent = u.nome; $('#u-email').textContent = u.email;
+  $('#u-foto').src = u.foto || ''; $('#u-foto').hidden = !u.foto;
+  $('#accesso').hidden = true; $('#portale').hidden = false;
+}
+function mostraAccesso() { $('#accesso').hidden = false; $('#portale').hidden = true; }
+
+function leggiSessione() { try { return JSON.parse(localStorage.getItem(CHIAVE) || 'null'); } catch (e) { return null; } }
+function salvaSessione(u) { try { localStorage.setItem(CHIAVE, JSON.stringify(u)); } catch (e) {} }
+function cancellaSessione() { try { localStorage.removeItem(CHIAVE); } catch (e) {} }
+
+// ---- Google Identity Services -----------------------------------------------
+// Decodifica il payload del token ID (non serve verificarne la firma: la pagina è
+// un cancello di comodità, il modulo stesso è già limitato al dominio).
+function payload(jwt) {
+  const b = jwt.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+  return JSON.parse(decodeURIComponent(atob(b).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')));
+}
+
+function onCredenziale(resp) {
+  let p;
+  try { p = payload(resp.credential); } catch (e) { msg('Risposta di Google non leggibile. Riprova.'); return; }
+  const dominio = (p.hd || (p.email || '').split('@')[1] || '').toLowerCase();
+  if (dominio !== DOMINIO || !p.email_verified) {
+    msg('Questo account (' + (p.email || 'sconosciuto') + ') non appartiene alla scuola. Accedi con l\'indirizzo @' + DOMINIO + '.');
+    try { google.accounts.id.disableAutoSelect(); } catch (e) {}
+    return;
+  }
+  const u = { nome: p.name || p.email, email: p.email, foto: p.picture || '', quando: Date.now() };
+  salvaSessione(u); msg(''); mostraPortale(u);
+}
+
+function avviaGoogle() {
+  if (!window.google || !google.accounts) { setTimeout(avviaGoogle, 150); return; }
+  if (CLIENT_ID.startsWith('INSERISCI')) { msg('Pagina non ancora configurata: manca l\'ID client OAuth (vedi commento nel sorgente).'); return; }
+  google.accounts.id.initialize({ client_id: CLIENT_ID, callback: onCredenziale, hd: DOMINIO, auto_select: true, ux_mode: 'popup', itp_support: true });
+  google.accounts.id.renderButton($('#gsi'), { theme: 'filled_blue', size: 'large', shape: 'pill', text: 'signin_with', locale: 'it', width: 280 });
+}
+
+$('#esci').addEventListener('click', () => {
+  cancellaSessione(); try { google.accounts.id.disableAutoSelect(); } catch (e) {}
+  mostraAccesso(); avviaGoogle();
+});
+
+// ---- Avvio -------------------------------------------------------------------
+const sessione = leggiSessione();
+if (sessione && sessione.email && sessione.email.endsWith('@' + DOMINIO) && Date.now() - (sessione.quando || 0) < 30 * 24 * 3600 * 1000) {
+  mostraPortale(sessione);
+} else {
+  cancellaSessione(); mostraAccesso();
+}
+avviaGoogle();
+</script>
+</body>
+</html>
